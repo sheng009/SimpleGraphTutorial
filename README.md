@@ -35,3 +35,4 @@ show the response message of Verify Token API.
 - If the audience ("aud") of an access token is Verify Token API, then Verify Token API can validate the signature of the token.
 - If the audience of an access token is not Verify Token API, it is not suggested that Verify Token API validate the signature. Because it's not safety.
 - So if we hope this React Native app can use Verify Token API, we would better be careful with some API/Permissions which will be added to app scopes, please make sure the audience ("aud") of access tokens is Verify Token API.
+  + ![aud is VerifyTokenAPI](aud-is-VerifyTokenAPI.jpg)
