@@ -7,7 +7,7 @@ We can use this React Native demo app to get access token and validate access to
 - Please install the following tools:
   + React Native CLI
     * https://reactnative.dev/docs/0.61/getting-started
-  + You use Visual Studio Code or Android Studio or other editors
+  + You use Visual Studio Code or Android Studio or other editors.
 - Please open the project root folder in a cmd shell. Then run the following commands.
   + ```
     npm install
