@@ -11,7 +11,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { DrawerToggle, headerOptions } from '../menus/HeaderComponents';
 import { AuthManager } from '../auth/AuthManager';
 import { GraphManager } from '../graph/GraphManager';
-import { refresh } from 'react-native-app-auth';
 
 const Stack = createStackNavigator();
 const UserState = React.createContext({userLoading: true, userName: '', accessToken: ''});
@@ -116,7 +115,6 @@ const HomeComponent = () => {
     <View style={styles.container}>
       <ActivityIndicator animating={userState.userLoading} size='large' />
       {userState.userLoading ? null: <Text>Hello {userState.userName} !</Text>}
-      {/* {userState.userLoading ? null: <Text>Access Token {JSON.stringify(userState)}!</Text>} */}
       <View style={styles.buttonMargin}>
         <Button title='Validate API' onPress={_requestVerifyAPI}/>
       </View>
