@@ -68,19 +68,24 @@ export class AuthManager {
 
   static refreshAccessTokenAsync = async() => {
     const refreshToken = await AsyncStorage.getItem('refreshToken');
-    const result = await refresh(config, { refreshToken: refreshToken || '' });
 
-    // Store the new access token, refresh token, and expiration time in storage
-  
-    if(result.accessToken){
-      await AsyncStorage.setItem('userToken', result.accessToken);
-      await AsyncStorage.setItem('refreshToken', result.refreshToken || '');
-      await AsyncStorage.setItem('expireTime', result.accessTokenExpirationDate);
-      return result.accessToken;
+    try{
+      const result = await refresh(config, { refreshToken: refreshToken || '' });
+      // Store the new access token, refresh token, and expiration time in storage
+      if(result.accessToken){
+        await AsyncStorage.setItem('userToken', result.accessToken);
+        await AsyncStorage.setItem('refreshToken', result.refreshToken || '');
+        await AsyncStorage.setItem('expireTime', result.accessTokenExpirationDate);
+        return result.accessToken;
+      }else{
+        console.warn('Received refreshed accessToken is not valid.');
+      }
+    }catch(error)
+    {
+        console.error('Failed to refresh token from Azure AD. ' + error);
     }
 
     let oldToken = await AsyncStorage.getItem('userToken');
     return oldToken;
-    
   }
 }
